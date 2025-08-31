@@ -1,6 +1,34 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import HeroSection from '../components/home/HeroSection.vue'
 import FeaturesSection from '../components/home/FeaturesSection.vue'
+
+const router = useRouter()
+
+const navigateToAbout = () => {
+  router.push('/about')
+}
+
+const navigateToServices = () => {
+  router.push('/services')
+}
+
+const navigateToContact = () => {
+  router.push('/contact')
+}
+
+const handleStartProject = () => {
+  router.push('/contact')
+}
+
+const handleScheduleCall = () => {
+  // Open calendar booking or contact form
+  window.open('tel:+15551234567', '_self')
+}
+
+const handleServiceLearnMore = (service: string) => {
+  router.push(`/services#${service}`)
+}
 </script>
 
 <template>
@@ -59,7 +87,7 @@ import FeaturesSection from '../components/home/FeaturesSection.vue'
             </div>
           </div>
           
-          <button class="group bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button @click="navigateToAbout" class="group bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
             <span class="flex items-center">
               Learn More About Us
               <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
@@ -98,7 +126,7 @@ import FeaturesSection from '../components/home/FeaturesSection.vue'
             </div>
             <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-primary-300 transition-colors">Web Development</h3>
             <p class="text-gray-300 leading-relaxed mb-6">High-performance websites using modern frameworks like React, Vue, and Next.js for optimal user experience.</p>
-            <button class="text-primary-400 hover:text-primary-300 font-medium transition-colors">
+            <button @click="handleServiceLearnMore('web-development')" class="text-primary-400 hover:text-primary-300 font-medium transition-colors">
               Learn More <i class="fas fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -112,7 +140,7 @@ import FeaturesSection from '../components/home/FeaturesSection.vue'
             </div>
             <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-accent-300 transition-colors">UI/UX Design</h3>
             <p class="text-gray-300 leading-relaxed mb-6">Beautiful and user-friendly designs that convert visitors into customers with intuitive user experiences.</p>
-            <button class="text-accent-400 hover:text-accent-300 font-medium transition-colors">
+            <button @click="handleServiceLearnMore('ui-ux-design')" class="text-accent-400 hover:text-accent-300 font-medium transition-colors">
               Learn More <i class="fas fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -126,7 +154,7 @@ import FeaturesSection from '../components/home/FeaturesSection.vue'
             </div>
             <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-secondary-300 transition-colors">SEO Optimization</h3>
             <p class="text-gray-300 leading-relaxed mb-6">Rank higher on search engines and get more organic traffic with our proven SEO strategies.</p>
-            <button class="text-secondary-400 hover:text-secondary-300 font-medium transition-colors">
+            <button @click="handleServiceLearnMore('seo-optimization')" class="text-secondary-400 hover:text-secondary-300 font-medium transition-colors">
               Learn More <i class="fas fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -261,14 +289,14 @@ import FeaturesSection from '../components/home/FeaturesSection.vue'
           </p>
           
           <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
-            <button class="group bg-white text-primary-600 px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25">
+            <button @click="handleStartProject" class="group bg-white text-primary-600 px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25">
               <span class="flex items-center">
                 Start Your Project
                 <i class="fas fa-rocket ml-2 group-hover:translate-x-1 transition-transform"></i>
               </span>
             </button>
             
-            <button class="group glass-effect px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 border border-white/30 hover:border-white/50 text-white">
+            <button @click="handleScheduleCall" class="group glass-effect px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 border border-white/30 hover:border-white/50 text-white">
               <span class="flex items-center">
                 <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
                 Schedule a Call

@@ -1,5 +1,23 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
+const handleGetStarted = () => {
+  router.push('/contact')
+}
+
+const handleWatchDemo = () => {
+  // Open demo video or modal
+  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')
+}
+
+const scrollToFeatures = () => {
+  const element = document.getElementById('features')
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -33,14 +51,14 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-          <button class="group bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-primary-500/25">
+          <button @click="handleGetStarted" class="group bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-primary-500/25">
             <span class="flex items-center">
               Get Started Free
               <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
             </span>
           </button>
           
-          <button class="group glass-effect px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 border border-white/30 hover:border-white/50">
+          <button @click="handleWatchDemo" class="group glass-effect px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 border border-white/30 hover:border-white/50">
             <span class="flex items-center text-white">
               <i class="fas fa-play mr-2 group-hover:scale-110 transition-transform"></i>
               Watch Demo
@@ -67,9 +85,9 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <i class="fas fa-chevron-down text-white/50 text-2xl"></i>
-    </div>
+    <button @click="scrollToFeatures" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-primary-300 transition-colors cursor-pointer">
+      <i class="fas fa-chevron-down text-white/50 text-2xl hover:text-primary-300"></i>
+    </button>
   </section>
 </template>
 
